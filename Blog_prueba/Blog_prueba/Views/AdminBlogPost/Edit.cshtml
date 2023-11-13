@@ -4,7 +4,7 @@
 
 <div class="bg-secondary bg-opacity-10 py-2">
     <div class="container">
-        <hi>Edit Blog Posts - Admin Functionality</hi>
+        <hi>Editar Post - Admin</hi>
     </div>
 </div>
 
@@ -19,27 +19,27 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Heading</label>
+                <label class="form-label">Encabezado</label>
                 <input type="text" class="form-control" id="heading" asp-for="Heading" />
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Page Title</label>
+                <label class="form-label">Título</label>
                 <input type="text" class="form-control" id="pageTitle" asp-for="PageTitle" />
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Content</label>
+                <label class="form-label">Contenido</label>
                 <textarea class="form-control" id="content" asp-for="Content"></textarea>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Short Description</label>
+                <label class="form-label">Descripción breve</label>
                 <input type="text" class="form-control" id="shortDescription" asp-for="ShortDescription" />
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Featured Image Upload</label>
+                <label class="form-label">Imagen thumbnail</label>
                 <input type="file" id="featuredImageUpload" class="form-control" />
 
                 @if(Model.FeaturedImageUrl != null)
@@ -53,7 +53,7 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Featured Image Url</label>
+                <label class="form-label">URL imagen</label>
                 <input type="text" class="form-control" id="featuredImageUrl" asp-for="FeaturedImageUrl" />
             </div>
 
@@ -63,37 +63,37 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Published Date</label>
+                <label class="form-label">Fecha de publicación</label>
                 <input type="date" class="form-control" id="publishedDate" asp-for="PublishedDate" />
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Author</label>
+                <label class="form-label">Autor</label>
                 <input type="text" class="form-control" id="author" asp-for="Author" />
             </div>
 
             <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" id="visible" asp-for="Visible">
                 <label class="form-check-label">
-                    Is Visible?
+                    Es visible?
                 </label>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Tags</label>
+                <label class="form-label">Categorías</label>
                 <select class="form-select" asp-items="@Model.Tags" asp-for="SelectedTags">
                 </select>
             </div>
 
             <div class="mb-3 d-flex">
                 <button type="submit" class="btn btn-dark">Update</button>
-                <button type="submit" class="btn btn-danger ms-2" asp-area="" asp-controller="AdminBlogPost" asp-action="Delete">Delete</button>
+                <button type="submit" class="btn btn-danger ms-2" asp-area="" asp-controller="AdminBlogPost" asp-action="Delete">Borrar</button>
             </div>
         </form>
     }
     else
     {
-        <p>No blog Post Found :(</p>
+        <p>No se encontraron blogs :(</p>
     }
 </div>
 

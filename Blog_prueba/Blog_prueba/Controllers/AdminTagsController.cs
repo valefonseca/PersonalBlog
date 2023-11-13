@@ -29,6 +29,11 @@ namespace Blog_prueba.Controllers
         [ActionName("Add")]
         public async Task<IActionResult> Add(AddTagRequest addTagRequest)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             //mapeo de AddTagRequest a Tag domain model
             var tag = new Tag
             {

@@ -6,7 +6,7 @@
 
 <div class="bg-secondary bg-opacity-10 py-2">
     <div class="container">
-        <hi>Show All Blog Posts - Admin Functionality</hi>
+        <hi> Blog Posts - Admin</hi>
     </div>
 </div>
 
@@ -17,8 +17,8 @@
             <thead>
                 <tr>
                     <td>Id</td>
-                    <td>Heading</td>
-                    <td>Tags</td>
+                    <td>Encabezado</td>
+                    <td>Categorías</td>
                     <td> </td>
                 </tr>
             </thead>
@@ -37,7 +37,7 @@
                             </div>
                         </td>
                         <td>
-                            <a asp-area="" asp-controller="AdminBlogPost" asp-action="Edit" asp-route-id="@blogPost.Id">Edit</a>
+                            <a asp-area="" asp-controller="AdminBlogPost" asp-action="Edit" asp-route-id="@blogPost.Id">Editar</a>
                         </td>
                     </tr>
                 }
@@ -46,7 +46,7 @@
     }
     else
     {
-        <p>No Blog Posts Found :(</p>
+        <p>No Se encontraron posts :(</p>
     }
 
     

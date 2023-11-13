@@ -7,11 +7,11 @@
     <div class="row align-items-center g-5 py-5">
         <div class="col-12 col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3">
-                Blog - the dev blog
+                Blog Web - Tarea 2 del curso
             </h1>
             <p class="lead">
-                blog is the home to coding blogs covering a vast 
-                range of topics like HTML, CSS, .NET
+                Este es un blog web donde se añaden posts de diversos temas.
+                Dichos posts tienen comentarios y likes y pueden contener tanto texto como imagenes dentro de su contenido.
             </p>
         </div>
 
@@ -23,54 +23,50 @@
 </div>
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-6 d-flex">
-            @if(Model != null && Model.Tags.Any())
+    <div class="row">
+        <div class="col-sm-8">
+                @if (Model != null && Model.BlogPosts.Any())
+                {
+                    foreach (var blogPost in Model.BlogPosts)
+                    {
+                        <div class="mb-5 bg-light box-shadow p-5">
+                            <img src="@blogPost.FeaturedImageUrl" alt="@blogPost.Heading" class="mb-2 d-block img-fluid" />
+
+                            <h2 class="mb-4">@blogPost.Heading</h2>
+                            <p class="mb-4">
+                                Autor: @blogPost.Author
+                                <br />
+                                Fecha de publicación: @blogPost.PublishedDate.ToShortDateString()
+                            </p>
+
+                            <p class="mb-4">
+                                @foreach (var tag in blogPost.Tags)
+                                {
+                                    <spam class="badge bg-secondary me-1">@tag.Name</spam>
+                                }
+                            </p>
+
+                            <p class="mb-4">@blogPost.ShortDescription</p>
+                            <a class="btn btn-dark" asp-area="" asp-controller="Blogs" asp-action="Index" asp-route-urlHandle="@blogPost.UrlHandle">Ver Mas</a>
+                        </div>
+                    }
+                }
+        </div>
+        <div class="col-sm-4 p-5">
+            <div>
+                <h4>Categorías:</h4>
+            </div>
+            @if (Model != null && Model.Tags.Any())
             {
-                foreach(var tag in Model.Tags)
+                foreach (var tag in Model.Tags)
                 {
                     <span class="badge bg-dark me-1">
                         @tag.Name
                     </span>
                 }
             }
-        </div>
-    </div>
-
-</div>
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-6">
-            @if(Model != null && Model.BlogPosts.Any())
-            {
-                foreach(var blogPost in Model.BlogPosts)
-                {
-                    <div class="mb-5 bg-light box-shadow p-5">
-                        <img src="@blogPost.FeaturedImageUrl" alt="@blogPost.Heading" class="mb-2 d-block img-fluid"/>
-
-                        <h2 class="mb-4">@blogPost.Heading</h2>
-                        <p class="mb-4">
-                            Autor: @blogPost.Author
-                            <br />
-                            Fecha de publicación: @blogPost.PublishedDate.ToShortDateString()
-                        </p>
-
-                        <p class="mb-4">
-                            @foreach (var tag in blogPost.Tags)
-                            {
-                                <spam class="badge bg-secondary me-1">@tag.Name</spam>
-                            }
-                        </p>
-
-                        <p class="mb-4">@blogPost.ShortDescription</p>
-                        <a class="btn btn-dark" asp-area="" asp-controller="Blogs" asp-action="Index" asp-route-urlHandle="@blogPost.UrlHandle">Ver Mas</a>
-                    </div>
-                }
-            }
-
-
 
         </div>
+
     </div>
 </div>
