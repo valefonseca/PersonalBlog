@@ -5,7 +5,7 @@ namespace Blog_prueba.Data
 {
     public class BlogDbContext : DbContext
     {
-        public BlogDbContext(DbContextOptions options) : base(options)
+        public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
         {
         }
 

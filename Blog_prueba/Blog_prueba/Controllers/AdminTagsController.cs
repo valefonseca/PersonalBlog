@@ -2,11 +2,13 @@
 using Blog_prueba.Models.Domain;
 using Blog_prueba.Models.ViewModels;
 using Blog_prueba.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog_prueba.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdminTagsController : Controller
     {
         private readonly ITagRepository tagRepository;
@@ -38,7 +40,6 @@ namespace Blog_prueba.Controllers
 
             return RedirectToAction("List");
         }
-
 
         [HttpGet]
         [ActionName("List")]

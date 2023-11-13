@@ -1,4 +1,6 @@
 ﻿using Blog_prueba.Models;
+using Blog_prueba.Models.ViewModels;
+using Blog_prueba.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +9,29 @@ namespace Blog_prueba.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IBlogPostRepository blogPostRepository;
+        private readonly ITagRepository tagRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IBlogPostRepository blogPostRepository, ITagRepository tagRepository)
         {
             _logger = logger;
+            this.blogPostRepository = blogPostRepository;
+            this.tagRepository = tagRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var blogPosts = await blogPostRepository.GetAllAsync();
+
+            var tags = await tagRepository.GetAllAsync();
+
+            var model = new HomeViewModel
+            {
+                BlogPosts = blogPosts,
+                Tags = tags
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()
